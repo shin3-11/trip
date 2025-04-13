@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>福岡満喫！ 1泊2日の旅</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* 基本的なスタイル設定 */
+        body {
+            font-family: 'Noto Sans JP', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fdfdfd;
+            color: #333;
+        }
+
+        /* 見出しスタイル */
+        h1,
+        h2,
+        h3 {
+            color: #2c3e50;
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        h2 {
+            background-color: #eaf2f8;
+            padding: 10px 15px;
+            border-left: 5px solid #3498db;
+            margin-top: 40px;
+            border-radius: 5px;
+            font-size: 1.5em;
+        }
+
+        h3 {
+            border-bottom: 1px dashed #bdc3c7;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            color: #34495e;
+            font-size: 1.3em;
+        }
+
+        /* スケジュール項目スタイル (PC向け) */
+        .schedule-item {
+            margin-bottom: 25px;
+            padding-left: 80px;
+            position: relative;
+            border-left: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+
+        /* タイムラインのドット (PC向け) */
+        .schedule-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            background-color: #3498db;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-sizing: border-box;
+        }
+
+        /* 時間表示スタイル (PC向け) */
+        .schedule-time {
+            font-weight: bold;
+            color: #3498db;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 70px;
+            text-align: right;
+            padding-right: 15px;
+            font-size: 0.95em;
+        }
+
+        /* スポット情報、食事情報、お土産情報のボックススタイル */
+        .spot-info,
+        .food-info,
+        .souvenir-info {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+            margin-left: -60px;
+            /* PC向け: 左にずらす */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        /* スポット・食事・お土産情報内の見出し */
+        .spot-info h4,
+        .food-info h4,
+        .souvenir-info h4 {
+            margin-top: 0;
+            color: #495057;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 5px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+        }
+
+        .spot-info h4 .icon,
+        .food-info h4 .icon,
+        .souvenir-info h4 .icon {
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+
+        /* ボックス内の太字 */
+        .spot-info strong,
+        .food-info strong,
+        .souvenir-info strong {
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        /* 交通手段オプションのスタイル */
+        .transport-option {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-left: 1em;
+            margin-top: 5px;
+            padding: 5px 10px;
+            border-left: 3px solid #ced4da;
+            background-color: #f1f3f5;
+            border-radius: 3px;
+        }
+
+        /* メモ欄のスタイル */
+        .memo {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+
+        /* メモ欄の見出しスタイル */
+        .memo h2 {
+            background-color: transparent;
+            border-left: none;
+            margin-top: 0;
+            padding: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ffeeba;
+            color: #856404;
+            display: flex;
+            align-items: center;
+        }
+
+        .memo h2 .icon {
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+
+        /* リストスタイル */
+        ul {
+            padding-left: 20px;
+            margin-top: 5px;
+            list-style: none;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        /* 食事候補リストのスタイル調整 */
+        .food-info ul li::before {
+            content: "🍴";
+            color: inherit;
+            left: -2px;
+        }
+
+        /* スポット見どころリストのスタイル調整 */
+        .spot-info ul li::before {
+            content: "⭐";
+            color: inherit;
+            left: -2px;
+        }
+
+        /* メモリストのスタイル調整 */
+        .memo ul li::before {
+            content: "📝";
+            color: inherit;
+            left: -2px;
+        }
+
+        /* お土産候補リストのスタイル調整 */
+        .souvenir-info ul li::before {
+            content: "🎁";
+            color: inherit;
+            left: -2px;
+        }
+
+        /* 新幹線情報など特に強調したい部分 */
+        strong.highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        /* 食事場所タグ */
+        .location-tag {
+            display: inline-block;
+            font-size: 0.8em;
+            background-color: #e9ecef;
+            color: #495057;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-left: 5px;
+        }
+
+        /* 画像スタイル */
+        .spot-image {
+            /* スポット画像用のクラス */
+            width: 100%;
+            max-width: 250px;
+            /* 最大幅を少し広げる */
+            height: auto;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #eee;
+            /* 読み込み中の背景色 */
+        }
+
+        /* リンクスタイル */
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .official-link {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 0.9em;
+            background-color: #e2f0fb;
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
+
+        .official-link::before {
+            content: "🔗";
+            margin-right: 4px;
+        }
+
+        /* ==================== レスポンシブ対応 (画面幅600px以下) ==================== */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+                -webkit-text-size-adjust: 100%;
+            }
+
+            h1 {
+                font-size: 1.6em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+                padding: 8px 10px;
+            }
+
+            h3 {
+                font-size: 1.15em;
+            }
+
+            .schedule-item {
+                padding-left: 15px;
+                margin-left: 0;
+                border-left: none;
+                padding-bottom: 20px;
+            }
+
+            .schedule-item::before {
+                display: none;
+            }
+
+            .schedule-time {
+                position: static;
+                display: block;
+                width: auto;
+                text-align: left;
+                padding-right: 0;
+                margin-bottom: 8px;
+                font-size: 1em;
+                color: #555;
+                font-weight: bold;
+                background-color: #f1f3f5;
+                padding: 3px 8px;
+                border-radius: 3px;
+                display: inline-block;
+            }
+
+            .spot-info,
+            .food-info,
+            .souvenir-info {
+                margin-left: 0;
+                padding: 10px;
+                box-shadow: none;
+            }
+
+            .transport-option {
+                margin-left: 0;
+                padding-left: 10px;
+            }
+
+            .spot-image {
+                max-width: 100%;
+                /* スマホでは画像幅を画面に合わせる */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1><span class="icon">✈️</span> 福岡満喫！ 1泊2日の旅</h1>
+    <p><strong>日程</strong>: 2025年5月12日(月) ～ 5月13日(火)</p>
+    <p><strong>宿泊</strong>: オリエンタルホテル福岡 博多ステーション <a href="https://fukuoka-orientalhotel.com/" target="_blank"
+            rel="noopener noreferrer" class="official-link">公式サイト</a></p>
+
+    <h2>【1日目：2025年5月12日(月) 太宰府と福岡市内観光】</h2>
+
+    <h3><span class="icon">☀️</span> 午前</h3>
+    <div class="schedule-item">
+        <span class="schedule-time">～8:00頃</span> <span class="icon">🏠</span> JR高槻駅出発、新大阪駅へ移動
+    </div>
+    <div class="schedule-item">
+        <span class="schedule-time">8:24</span> <span class="icon">🚄</span> 新大阪駅発 (JR新幹線 <strong
+            class="highlight">のぞみ1号</strong> / <strong class="highlight">9号車 16番 C・D席</strong>)
+    </div>
+    <div class="schedule-item">
+        <span class="schedule-time">10:52</span> <span class="icon">📍</span> 博多駅着
+    </div>
+    <div class="schedule-item">
+        <span class="schedule-time">11:00-11:20</span> <span class="icon">🏨</span> オリエンタルホテル福岡 博多ステーションへ移動、荷物を預ける
+    </div>
+    <div class="schedule-item">
+        <span class="schedule-time">11:20-12:20頃</span> <span class="icon">➡️</span> 博多駅から太宰府へ移動
+        <div class="transport-option">
+            <strong>[<span class="icon">🚃</span> 電車ルート]</strong> 博多駅 → (地下鉄) → 天神駅 → (徒歩) → 西鉄福岡(天神)駅 → (西鉄電車) → 西鉄二日市駅
+            → (西鉄電車) → 太宰府駅 (約50分～1時間)
+        </div>
+        <div class="transport-option">
+            <strong>[<span class="icon">🚌</span> ※バス利用の場合]</strong> 博多バスターミナル → 西鉄バス「太宰府ライナーバス 旅人」→ 太宰府 (約40分)
+        </div>
+    </div>
+
+    <h3><span class="icon">🏙️</span> 午後</h3>
+    <div class="schedule-item">
+        <span class="schedule-time">12:20頃-14:30</span> <strong>太宰府エリア</strong>
+        <div class="spot-info">
+            <h4><span class="icon">⛩️</span>【太宰府天満宮】</h4>
+            <img src="https://www.fukuoka-bunkazai.jp/Dat/Img/yukei/32/p572.jpg" alt="太宰府天満宮の画像" class="spot-image"
+                loading="lazy"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=画像読込失敗';">
+            <p><strong>どんなところ？</strong>: 「学問の神様」菅原道真公を祀る、全国約12,000社の天満宮の総本宮！合格祈願や学業成就を願う多くの参拝者で賑わう、とても由緒ある神社です。</p>
+            <p><strong>ここが見どころ！</strong>:</p>
+            <ul>
+                <li>まずは本殿にご挨拶 (桃山時代の華やかな建築様式・重文)</li>
+                <li>伝説が宿る「飛梅(とびうめ)」(御神木)</li>
+                <li>心字池と太鼓橋で心身リフレッシュ (写真映えも！)</li>
+                <li>参道で食べ歩き＆お土産探しが楽しい！ (梅ヶ枝餅はぜひ！)</li>
+            </ul>
+            <a href="https://www.dazaifutenmangu.or.jp/" target="_blank" rel="noopener noreferrer"
+                class="official-link">太宰府天満宮 公式サイト</a>
+        </div>
+        <div class="food-info">
+            <h4><span class="icon">🍜</span> 昼食</h4>
+            <p><strong>【食事候補 (太宰府エリア)】</strong> ※お店の場所にご注意ください</p>
+            <ul>
+                <li>かさの家 <span class="location-tag">参道沿い</span> (梅ヶ枝餅と和食)</li>
+                <li>食事処 松屋 <span class="location-tag">参道沿い</span> (家庭的な和定食)</li>
+                <li>照星館 <span class="location-tag">駅から徒歩約5分</span> (古民家で手打ち蕎麦)</li>
+                <li>coba cafe <span class="location-tag">駅から徒歩約7分</span> (古民家カフェ)</li>
+                <li>茶房 きくち <span class="location-tag">参道沿い</span> (抹茶・和スイーツ)</li>
+            </ul>
+        </div>
+        <p><span class="icon">🍡</span> 食べ歩き: 寺田屋さんの梅ヶ枝餅など。</p>
+    </div>
+    <div class="schedule-item">
+        <span class="schedule-time">14:30-15:10</span> <span class="icon">🚃</span> 太宰府駅から天神へ移動 (西鉄電車利用 約30分)
+    </div>
+    <div class="schedule-item">
+        <span class="schedule-time">15:10-17:45</span> <strong>天神・ベイサイドエリア観光</strong>
+        <p>15:10 - 15:20 西鉄福岡(天神)駅 → (地下鉄) → <strong>大濠公園駅</strong></p>
+        <p>15:20 - 15:50 <strong>大濠公園</strong> 散策 (約30分)</p>
+        <div class="spot-info">
+            <h4><span class="icon">🌳</span>【大濠公園】</h4>
+            <img src="https://www.ohorikouen.jp/img/map/index/map.png" alt="大濠公園のマップ画像" class="spot-image"
+                loading="lazy"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=画像読込失敗';">
+            <p><strong>どんなところ？</strong>: 福岡の街の中心にあるとは思えないほど広々！大きな池の周りに緑があふれる、まさに都会のオアシスです。</p>
+            <p><strong>ここが見どころ！</strong>:</p>
+            <ul>
+                <li>気持ちいい水辺さんぽを満喫 (池周り約2km)</li>
+                <li>のんびりボート遊び (スワンボートなど)</li>
+                <li>アートや日本文化に触れる (美術館、日本庭園)</li>
+                <li>湖畔のおしゃれカフェでひと休み (スタバなど)</li>
+            </ul>
+            <a href="https://www.ohorikouen.jp/" target="_blank" rel="noopener noreferrer" class="official-link">大濠公園
+                公式サイト</a>
+        </div>
+        <p>15:50 - 16:15 大濠公園駅から福岡タワーへ移動</p>
+        <div class="transport-option">
+            <strong>[<span class="icon">🚃</span> 電車ルート]</strong> 大濠公園駅 → (地下鉄) → 西新駅 → (徒歩 約20分) → 福岡タワー
+        </div>
+        <div class="transport-option">
+            <strong>[<span class="icon">🚌</span> ※バス利用の場合]</strong> 大濠公園近くバス停 → 福岡タワー行きバス (約15-20分)
+        </div>
+        <p>16:15 - 16:55 <strong>福岡タワー</strong> 見学 (約40分)</p>
+        <div class="spot-info">
+            <h4><span class="icon">🗼</span>【福岡タワー】</h4>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh-2ySyX5E1_mOV6E8SBVk0ENKRWRjL6FeMw&s"
+                alt="福岡タワーの画像" class="spot-image" loading="lazy"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=画像読込失敗';">
+            <p><strong>どんなところ？</strong>: 高さ234m！海浜タワーとしては日本一の高さを誇る、福岡のシンボルタワー。</p>
+            <p><strong>ここが見どころ！</strong>:</p>
+            <ul>
+                <li>地上123mからの大パノラマは必見！ (360度の絶景)</li>
+                <li>ロマンチックな夕景・夜景 (今回は夕景！)</li>
+                <li>「恋人の聖地」で思い出の一枚を (フォトスポット)</li>
+            </ul>
+            <a href="https://www.fukuokatower.co.jp/" target="_blank" rel="noopener noreferrer"
+                class="official-link">福岡タワー 公式サイト</a>
+        </div>
+        <p>16:55 - 17:45 福岡タワーからキャナルシティ博多へ移動</p>
+        <div class="transport-option">
+            <strong>[<span class="icon">🚃</span> 電車ルート]</strong> 福岡タワー → (徒歩 約20分) → 西新駅 → (地下鉄) → 天神駅 → (地下鉄) → 櫛田神社前駅
+            → (徒歩すぐ) → キャナルシティ博多 (約45～50分)
+        </div>
+        <div class="transport-option">
+            <strong>[<span class="icon">🚌</span> ※バス利用の場合]</strong> 福岡タワー前バス停 → キャナルシティ博多方面行きバス (約25-30分)
+        </div>
+        <p>17:45 - 18:00 <strong>キャナルシティ博多</strong> 少し散策</p>
+        <div class="spot-info">
+            <h4><span class="icon">🛍️</span>【キャナルシティ博多】</h4>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2RD2ld992poWJ0w-2eJWr7OO7GcW9QDM_uQ&s"
+                alt="キャナルシティ博多の画像" class="spot-image" loading="lazy"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=画像読込失敗';">
+            <p><strong>どんなところ？</strong>: まるで街の中に運河が流れているみたい！一日中楽しめるエンターテイメント複合施設です。</p>
+            <p><strong>ここが見どころ！</strong>:</p>
+            <ul>
+                <li>歩いているだけでワクワク！ (個性的な建物と運河)</li>
+                <li>ショッピングもグルメも大満足 (約250店舗！)</li>
+                <li>ダイナミックな噴水ショーは必見！ (30分毎開催)</li>
+                <li>ラーメン好きなら「ラースタ」へGO！ (ラーメンスタジアム)</li>
+            </ul>
+            <a href="https://canalcity.co.jp/" target="_blank" rel="noopener noreferrer" class="official-link">キャナルシティ博多
+                公式サイト</a>
+        </div>
+    </div>
+
+    <h3><span class="icon">🌙</span> 夜</h3>
+    <div class="schedule-item">
+        <span class="schedule-time">18:00-19:30</span> <strong>夕食</strong>
+        <div class="food-info">
+            <h4><span class="icon">🍲</span>【パターン1：キャナルシティ または 中洲周辺で食べる場合】</h4>
+            <p>流れ: キャナル散策後、そのまま施設内か中洲エリアで。食後はホテルへ徒歩。</p>
+            <p>候補例:</p>
+            <ul>
+                <li>ラーメンスタジアム <span class="location-tag">キャナル5F</span></li>
+                <li>キャナル内のレストラン <span class="location-tag">キャナル各フロア</span></li>
+                <li>元祖博多めんたい重 <span class="location-tag">中洲エリア</span></li>
+                <li>せいもん払い <span class="location-tag">中洲エリア</span></li>
+                <li>中洲屋台 <span class="location-tag">中洲川沿い</span></li>
+            </ul>
+        </div>
+        <div class="food-info">
+            <h4><span class="icon">🍚</span>【パターン2：博多駅まで戻って食べる場合】</h4>
+            <p>流れ: キャナルから博多駅へ移動(徒歩10-15分)してから。食後はすぐにホテルへ。</p>
+            <p>候補例:</p>
+            <ul>
+                <li>シティダイニング くうてん <span class="location-tag">アミュプラザ9-10F</span></li>
+                <li>うまいと <span class="location-tag">KITTE博多9-10F</span></li>
+                <li>博多めん街道 <span class="location-tag">デイトス2F</span></li>
+                <li>博多らーめん Shin-Shin <span class="location-tag">デイトス店/KITTE店</span></li>
+                <li>博多もつ鍋 やま中 博多店 <span class="location-tag">駅徒歩10分 ※要予約推奨</span></li>
+                <li>たんや HAKATA <span class="location-tag">駅1F</span></li>
+                <li>博多祇園 鉄なべ <span class="location-tag">駅周辺</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="schedule-item">
+        <span class="schedule-time">19:30頃～</span> <span class="icon">🏨</span> ホテルへ移動、チェックイン、ホテルでゆっくり過ごす
+    </div>
+
+    <h2>【2日目：2025年5月13日(火) 海の中道と帰路】</h2>
+
+    <h3><span class="icon">☀️</span> 午前</h3>
+    <div class="schedule-item">
+        <span class="schedule-time">～9:00</span> ホテルで朝食、チェックアウト（荷物預けorコインロッカーへ）
+    </div>
+    <div class="schedule-item">
+        <span class="schedule-time">9:00-9:40</span> <span class="icon">🚃</span> 博多駅から海の中道へ移動 (JR電車利用 約40分)
+    </div>
+    <div class="schedule-item">
+        <span class="schedule-time">9:40-13:30</span> <strong>海の中道海浜公園エリア</strong>
+        <div class="spot-info">
+            <h4><span class="icon">🐬</span>【マリンワールド海の中道】</h4>
+            <img src="https://marineworld.hiyoriyama.co.jp/images/2021/10/acc09-top.jpg" alt="マリンワールド海の中道の画像"
+                class="spot-image" loading="lazy"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=画像読込失敗';">
+            <p><strong>どんなところ？</strong>: 「九州の海」をテーマにした水族館。生き物たちの生き生きとした姿に出会えます。</p>
+            <p><strong>ここが見どころ！</strong>:</p>
+            <ul>
+                <li>巨大なパノラマ大水槽に圧倒される！ (幅24m！)</li>
+                <li>イルカ・アシカショーで大興奮！ (博多湾が背景)</li>
+                <li>九州の豊かな海の世界を探検！ (ムツゴロウなど)</li>
+                <li>可愛い海獣たちに心ゆくまで癒やされて (ペンギン、ラッコ等)</li>
+            </ul>
+            <a href="https://marine-world.jp/" target="_blank" rel="noopener noreferrer"
+                class="official-link">マリンワールド海の中道 公式サイト</a>
+        </div>
+        <div class="spot-info">
+            <h4><span class="icon">🌸</span>【海の中道海浜公園】</h4>
+            <img src="https://www.crossroadfukuoka.jp/storage/tourism_attractions/12470/responsive_images/YUrY6UPjJUlEEWdGscc0PkGOshlwTLEnNr3za6Oa__573_430.jpg"
+                alt="海の中道海浜公園の画像" class="spot-image" loading="lazy"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=画像読込失敗';">
+            <p><strong>どんなところ？</strong>: とにかく広い！自然いっぱいの国営公園。一日中楽しめます。</p>
+            <p><strong>ここが見どころ！</strong>:</p>
+            <ul>
+                <li>季節ごとに咲き誇る花畑は絶景！ (春はネモフィラ！)</li>
+                <li>可愛い動物たちとふれあえる！ (動物の森)</li>
+                <li>サイクリングで潮風を浴びよう！ (レンタサイクル推奨)</li>
+                <li>思いっきり遊べる広場やプールも！ (子どもの広場など)</li>
+            </ul>
+            <a href="https://uminaka-park.jp/" target="_blank" rel="noopener noreferrer" class="official-link">海の中道海浜公園
+                公式サイト</a>
+        </div>
+        <div class="food-info">
+            <h4><span class="icon">🍔</span> 昼食</h4>
+            <p><strong>【食事候補 (海の中道公園内 or 博多駅)】</strong></p>
+            <p>公園内で食べる場合:</p>
+            <ul>
+                <li>レストラン Reilly <span class="location-tag">マリンワールド内</span></li>
+                <li>公園内の軽食売店 <span class="location-tag">園内各所</span></li>
+                <li>The Luigans内レストラン <span class="location-tag">隣接ホテル</span></li>
+            </ul>
+            <p>博多駅に戻って食べる場合:</p>
+            <ul>
+                <li>牧のうどん <span class="location-tag">バスターミナルB1F</span></li>
+                <li>たんや HAKATA <span class="location-tag">駅1F</span></li>
+                <li>大地のうどん <span class="location-tag">駅地下</span></li>
+                <li>博多祇園 鉄なべ <span class="location-tag">駅周辺</span></li>
+                <li>駅ビルレストラン街 <span class="location-tag">アミュ/KITTEなど</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <h3><span class="icon">🛍️</span> 午後</h3>
+    <div class="schedule-item">
+        <span class="schedule-time">13:30-14:10</span> <span class="icon">🚃</span> 海ノ中道駅から博多駅へ移動 (JR電車利用 約40分)
+    </div>
+    <div class="schedule-item">
+        <span class="schedule-time">14:10-15:45</span> <span class="icon">📍</span> 博多駅周辺 (荷物受取、お土産購入など)
+        <div class="souvenir-info">
+            <h4><span class="icon">🎁</span> お土産候補</h4>
+            <p>博多駅構内（マイング、いっぴん通り）や駅ビル（デイトス、阪急など）にはたくさんのお土産屋さんがあります！</p>
+            <ul>
+                <li>
+                    <strong>明太子</strong>: 博多土産の定番！様々なメーカー（やまや、ふくや等）や種類（辛口、昆布漬け等）があります。チューブタイプも便利。
+                </li>
+                <li>
+                    <strong>博多通りもん</strong>: しっとりとした白あんが美味しい、西洋和菓子。個包装で配りやすく、誰にでも喜ばれる人気No.1のお菓子。
+                </li>
+                <li>
+                    <strong>めんべい</strong>: 明太子のピリッとした辛味と海鮮の旨味が詰まった、パリパリ食感のおせんべい。味の種類も豊富でおつまみにも。
+                </li>
+                <li>
+                    <strong>筑紫もち</strong>: 小さなお餅に香ばしいきな粉をまぶし、黒蜜をかけていただく上品な和菓子。個包装で食べやすい。
+                </li>
+                <li>
+                    <strong>お土産用博多ラーメン</strong>: 有名店の味を自宅で楽しめるセット。一蘭、一風堂、Shin-Shinなど、お店の味を再現したものが人気。
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="schedule-item">
+        <span class="schedule-time">～15:50</span> <span class="icon">🚄</span> 新幹線ホームへ移動
+    </div>
+    <div class="schedule-item">
+        <span class="schedule-time">16:00</span> 博多駅発 (JR新幹線 <strong class="highlight">のぞみ46号</strong> / <strong
+            class="highlight">9号車 1番 A・B席</strong>)
+    </div>
+    <div class="schedule-item">
+        <span class="schedule-time">18:40</span> 新大阪駅着
+    </div>
+
+    <h3><span class="icon">🌙</span> 夜</h3>
+    <div class="schedule-item">
+        <span class="schedule-time">18:40～</span> <span class="icon">🏠</span> 新大阪駅からJR高槻駅へ移動、帰着。お疲れ様でした！
+    </div>
+
+    <div class="memo">
+        <h2><span class="icon">📌</span>【メモ】</h2>
+        <ul>
+            <li><strong>交通</strong>: 移動手段は状況に合わせて選択を。1日乗車券等も検討。アプリ活用推奨。</li>
+            <li><strong>食事</strong>: 候補は一部です。最新情報(営業時間、定休日、混雑)は要確認。人気店は予約も検討。</li>
+            <li><strong>持ち物</strong>: 歩きやすい靴、季節に応じた服装、雨具、モバイルバッテリーなど。</li>
+        </ul>
+    </div>
+
+</body>
+
+</html>
