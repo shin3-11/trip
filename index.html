@@ -239,10 +239,10 @@
             border-radius: 3px;
             margin-left: 5px;
         }
-        /* 画像 */
+        /* 画像スタイル */
         .spot-image {
             width: 100%;
-            max-width: 250px;
+            max-width: 100%; /* 幅を100%に変更 */
             height: auto;
             border-radius: 5px;
             margin-top: 10px;
@@ -323,7 +323,7 @@
                  white-space: normal;
              }
              .spot-info, .food-info, .souvenir-info {
-                 margin-left: 0;
+                 margin-left: 0; /* 左マージンリセット */
                  padding: 10px;
                  box-shadow: none;
              }
@@ -331,6 +331,7 @@
                  margin-left: 0;
                  padding-left: 10px;
               }
+              /* スマホでも画像幅は100% */
               .spot-image {
                   max-width: 100%;
               }
@@ -437,6 +438,12 @@
     <h3><span class="icon">☀️</span> 午前</h3>
     <div class="schedule-item">
         <span class="schedule-time">～8:00頃</span> <span class="icon">🏠</span> JR高槻駅出発、新大阪駅へ移動
+    </div>
+    <div class="schedule-item">
+        <span class="schedule-time">7:30</span> <span class="icon">🚆</span> JR高槻駅 出発 (特急 はるか7号 / グリーン車 / 1号車 1番 A・B席)
+    </div>
+    <div class="schedule-item">
+        <span class="schedule-time">7:44</span> <span class="icon">🚉</span> 新大阪駅 到着、新幹線へ乗り換え
     </div>
     <div class="schedule-item">
         <span class="schedule-time">8:24</span> <span class="icon">🚄</span> 新大阪駅発 (JR新幹線 <strong class="highlight">のぞみ1号</strong> / <strong class="highlight">9号車 16番 C・D席</strong>)
@@ -718,7 +725,10 @@
 
     <h3><span class="icon">🌙</span> 夜</h3>
      <div class="schedule-item">
-        <span class="schedule-time">18:40～</span> <span class="icon">🏠</span> 新大阪駅からJR高槻駅へ移動、帰着。お疲れ様でした！
+        <span class="schedule-time">19:07</span> <span class="icon">🚆</span> 新大阪駅 出発 (特急 はるか46号 / グリーン車 / 1号車 10番 A・B席)
+    </div>
+     <div class="schedule-item">
+        <span class="schedule-time">19:19</span> <span class="icon">🏠</span> JR高槻駅 到着。お疲れ様でした！
     </div>
 
     <div class="memo">
