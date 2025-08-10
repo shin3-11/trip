@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雨の日の万博 攻略ガイド</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', 'Inter', sans-serif;
+            color: #333;
+        }
+        .expo-blue { color: #004098; }
+        .bg-expo-blue { background-color: #004098; }
+        .expo-red { color: #E60012; }
+        .bg-expo-red { background-color: #E60012; }
+        
+        details > summary {
+            cursor: pointer;
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] > summary ~ * {
+            animation: slide-down 0.4s ease-out;
+        }
+        @keyframes slide-down {
+            0% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-white flex flex-col min-h-screen">
+
+    <header class="bg-gradient-to-r from-[#004098] to-[#E60012] text-white p-6 text-center shadow-md">
+        <h1 class="text-2xl md:text-3xl font-bold">大阪・関西万博 雨の日 攻略ガイド</h1>
+    </header>
+
+    <main class="max-w-3xl mx-auto p-4 md:p-6 flex-grow">
+
+        <section class="text-center mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold expo-blue mb-3">雨の日は、チャンス！</h2>
+            <p class="text-md md:text-lg">来場者が少なく、多くのパビリオンは比較的スムーズに入れる可能性大。<br>ただし、アメリカ館など超人気パビリオンは雨でも長蛇の列の覚悟を。</p>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold mb-4 text-center expo-blue border-b-2 border-expo-red pb-2">持ち物チェックリスト</h2>
+            <div class="space-y-4 mt-6">
+                <details class="bg-slate-50 p-4 rounded-lg border border-slate-200 group">
+                    <summary class="font-bold text-lg flex items-center justify-between">
+                        <span class="expo-red">‼️ 絶対に必須</span>
+                        <span class="text-xl transform transition-transform group-open:rotate-180 expo-blue">▼</span>
+                    </summary>
+                    <ul class="mt-4 space-y-3 pl-5 list-disc text-slate-700">
+                        <li><strong>レインコート・ポンチョ:</strong> 両手が空くポンチョが便利！</li>
+                        <li><strong>替えの靴下 (複数枚):</strong> 快適さが格段に変わります。</li>
+                        <li><strong>ビニール袋 (大小複数):</strong> 濡れた物を気兼ねなく収納。</li>
+                        <li><strong>タオル:</strong> 体やカバンを拭くために。</li>
+                    </ul>
+                </details>
+                <details class="bg-slate-50 p-4 rounded-lg border border-slate-200 group">
+                    <summary class="font-bold text-lg flex items-center justify-between">
+                        <span class="expo-blue">⭐ あると超快適</span>
+                        <span class="text-xl transform transition-transform group-open:rotate-180 expo-blue">▼</span>
+                    </summary>
+                    <ul class="mt-4 space-y-3 pl-5 list-disc text-slate-700">
+                        <li><strong>防水ショルダーバッグ:</strong> ポンチョの下に掛けると完璧。</li>
+                        <li><strong>防水・撥水性の靴:</strong> 事前に防水スプレーを。</li>
+                        <li><strong>帽子:</strong> ポンチョと併用で顔が濡れるのを防ぎます。</li>
+                        <li><strong>薄手の上着:</strong> 体温調節や冷房対策に。</li>
+                        <li><strong>クリアファイル:</strong> 紙類の資料が濡れるのを防ぎます。</li>
+                        <li><strong>常備薬:</strong> 気圧の変化に備え、頭痛薬などがあると安心。</li>
+                        <li><strong>ジップロック:</strong> スマホやモバイルバッテリーを水から守る生命線。</li>
+                    </ul>
+                </details>
+            </div>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold mb-6 text-center expo-blue border-b-2 border-expo-red pb-2">おすすめ休憩スポット</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                    <h3 class="font-bold text-lg expo-blue">オーストリア館の隣</h3>
+                    <p class="text-slate-600 mt-1">壁と屋根があり、雨を完全にしのげる最高のスポット。</p>
+                </div>
+                <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                    <h3 class="font-bold text-lg expo-blue">コモンズEの隣</h3>
+                    <p class="text-slate-600 mt-1">比較的知られていない穴場的な休憩所。</p>
+                </div>
+                <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                    <h3 class="font-bold text-lg expo-blue">西ゲートの一番端</h3>
+                    <p class="text-slate-600 mt-1">人が少なく、席を見つけやすい可能性が高いです。</p>
+                </div>
+                <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                    <h3 class="font-bold text-lg expo-blue">フィリピン館</h3>
+                    <p class="text-slate-600 mt-1">パビリオン自体に屋根付きの休憩スペースがあります。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold mb-6 text-center expo-blue border-b-2 border-expo-red pb-2">モデルプラン</h2>
+            <div class="space-y-6">
+                <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                    <h3 class="font-bold text-xl expo-blue">【午前】パビリオン集合エリアを集中攻略！</h3>
+                    <p class="mt-2">「コモンズC」や「コモンズD」なら、建物内で複数のパビリオンを効率よく回れます。<br><strong>おすすめ例:</strong> パキスタン館、チェコ館、サウジアラビア館</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                    <h3 class="font-bold text-xl expo-blue">【昼食】早めのランチでしっかり休憩</h3>
+                    <p class="mt-2">レストランは混雑しがち。意外な穴場は**キッチンカー**。比較的空いていることが多いです。<br><strong>レストランなら:</strong> マレーシアパビリオンレストラン、神農生活</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                    <h3 class="font-bold text-xl expo-blue">【午後】休憩スポットを活用し、賢く巡る</h3>
+                    <p class="mt-2">午後は疲れも出ます。紹介した休憩スポットなどを活用。<br><strong>おやつ例:</strong> 万博限定「ミャクミャク焼き」で一息。</p>
+                </div>
+            </div>
+        </section>
+        
+        <div class="space-y-6">
+            <section class="bg-blue-50 border-l-4 border-expo-blue text-slate-800 p-6 rounded-r-lg">
+                <h2 class="text-xl font-bold mb-2 expo-blue">🌟 雨の日のイベント情報</h2>
+                <p>EXPOメッセ**「WASSE」**は**屋根付きの屋内展示場**なので、雨でも中止の心配なく楽しめます。
+                <br><br>
+                **屋外のショーについて:** 噴水ショーなどは雨でも開催されますが、当然ながら濡れる覚悟が必要です。ドローンショーなど天候に左右されるものは中止の可能性が高いため、公式アプリで最新情報を確認しましょう。</p>
+            </section>
+
+            <section class="bg-red-50 border-l-4 border-expo-red text-slate-800 p-6 rounded-r-lg">
+                <h2 class="text-xl font-bold mb-2 expo-red">♨️ 最重要TIPS: 体を冷やさない！</h2>
+                <p>雨の日の最大の敵は「冷え」です。持参した上着でこまめに体温調節を。体が冷えたら、会場内5か所の給水所で**「お湯」**をもらいましょう！</p>
+            </section>
+        </div>
+
+    </main>
+
+    <footer class="relative bg-expo-blue text-white mt-12 overflow-hidden">
+        <div class="absolute -bottom-20 -right-20 w-80 h-80 md:w-96 md:h-96 opacity-90">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#E60012" d="M48.2,-59.2C62.2,-48.8,73.2,-34.2,76.5,-18.2C79.8,-2.2,75.4,15.2,66.6,29.9C57.8,44.6,44.5,56.6,29.3,64.4C14.1,72.2,-3.1,75.9,-19.9,71.5C-36.7,67.1,-53.1,54.6,-64.2,38.9C-75.3,23.2,-81.1,4.3,-77.8,-12.8C-74.5,-29.9,-62.1,-45.3,-47.5,-55.8C-32.9,-66.3,-16.4,-71.9,0.9,-72.7C18.2,-73.5,36.3,-70.5,48.2,-59.2Z" transform="translate(100 100)" />
+            </svg>
+        </div>
+         <div class="absolute -bottom-32 -left-32 w-80 h-80 md:w-96 md:h-96 opacity-40">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#E60012" d="M51.9,-54.9C65.8,-46.8,74.7,-30.9,76.5,-14.7C78.3,1.5,73,18,63.6,32.3C54.2,46.6,40.7,58.7,25.6,65.6C10.5,72.5,-6.2,74.2,-22.1,68.9C-38,63.6,-53.1,51.3,-62.9,35.8C-72.7,20.3,-77.2,1.6,-73.2,-15.1C-69.2,-31.8,-56.7,-46.5,-42.1,-54.6C-27.5,-62.7,-10.8,-64.2,6.3,-65.1C23.4,-66,46.7,-67.2,51.9,-54.9Z" transform="translate(100 100)" />
+            </svg>
+        </div>
+    
+        <div class="relative max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-xl font-bold mb-4">EXPO 2025 大阪・関西万博</h3>
+            <p>それでは、お気をつけて！<br>雨ならではの万博を楽しんできてくださいね。👋</p>
+            <div class="mt-8 text-sm opacity-80">
+                <p>このページは非公式のファンサイトです。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
