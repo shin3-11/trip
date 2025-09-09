@@ -84,6 +84,7 @@
         </div>
     </header>
     
+    <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden md:hidden fixed inset-0 bg-white z-40 p-8 pt-24 flex flex-col">
         <nav class="flex flex-col space-y-8 text-2xl font-bold text-center text-gray-800 flex-grow">
             <a href="#timeline" class="mobile-link hover:text-[color:var(--expo-blue)]">タイムライン</a>
@@ -105,9 +106,8 @@
         <section id="qr-code-manager" class="mb-12">
              <h2 class="text-3xl font-bold expo-title mb-6 pb-2">万博チケットQRコード</h2>
              <div class="bg-white p-6 rounded-xl shadow-lg text-center">
-                 <div id="qr-display-area" class="mb-4 hidden p-4 border-2 border-dashed border-gray-300 rounded-lg">
-                     <img id="qr-image" src="" alt="アップロードされたQRコード" class="max-w-xs mx-auto rounded-md">
-                     <p class="text-sm text-gray-600 mt-4">このQRコードはあなたのブラウザ内にのみ保存されています。タブを閉じると自動で消去されます。</p>
+                 <div id="qr-display-area" class="mb-4 hidden p-4 border-2 border-dashed border-gray-300 rounded-lg max-h-96 flex justify-center items-center">
+                     <img id="qr-image" src="" alt="アップロードされたQRコード" class="max-w-full max-h-80 object-contain rounded-md">
                  </div>
                  <div id="qr-upload-area">
                      <p class="mb-4 text-gray-700">入場チケットのQRコード画像をアップロードしておくと、すぐに表示できて便利です。画像は外部に送信されません。</p>
