@@ -1,15 +1,66 @@
-<style>
-  #mapButton { display: none; }
-</style>
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth" style="scroll-padding-top: 80px;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【9/9当日用】万博最強攻略サイト</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f0f5fa;
+        }
+        /* ...（CSSは元通りです）... */
+    </style>
+</head>
+<body class="text-gray-800">
+    <!-- ...（元のHTMLは省略）... -->
+    <button id="openMapBtn" class="fixed bottom-6 right-6 expo-button-red text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 16.382V5.618a1 1 0 00-1.447-.894L15 7m0 13V7"/>
+        </svg>
+        <span class="font-bold text-base">MAP</span>
+    </button>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIconOpen = document.getElementById('menuIconOpen');
+            const menuIconClose = document.getElementById('menuIconClose');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const openMapBtn = document.getElementById('openMapBtn');
 
-<script>
-  const hamburgerMenu = document.getElementById('hamburgerMenu');
-  hamburgerMenu.addEventListener('click', function() {
-    const mapButton = document.getElementById('mapButton');
-    if (this.classList.contains('open')) {
-      mapButton.style.display = 'none';
-    } else {
-      mapButton.style.display = 'block';
-    }
-  });
-</script>
+            // 修正: toggleMenuでMAPボタンの表示・非表示を制御
+            const toggleMenu = () => {
+                mobileMenu.classList.toggle('hidden');
+                menuIconOpen.classList.toggle('hidden');
+                menuIconClose.classList.toggle('hidden');
+                // ハンバーガーメニュー表示中はMAPボタン非表示
+                if (!mobileMenu.classList.contains('hidden')) {
+                    openMapBtn.classList.add('hidden');
+                } else {
+                    openMapBtn.classList.remove('hidden');
+                }
+            };
+
+            hamburgerBtn.addEventListener('click', toggleMenu);
+            mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+            // ---以降は元のコード---
+            const mapModal = document.getElementById('mapModal');
+            const closeModalBtn = document.getElementById('closeModal');
+            openMapBtn.addEventListener('click', () => {
+                mapModal.classList.remove('hidden');
+                mapModal.classList.add('flex');
+            });
+            const closeMapModal = () => {
+                mapModal.classList.remove('flex');
+                mapModal.classList.add('hidden');
+            };
+            closeModalBtn.addEventListener('click', closeMapModal);
+            mapModal.addEventListener('click', (e) => { if (e.target === mapModal) closeMapModal(); });
+        });
+    </script>
+</body>
+</html>
